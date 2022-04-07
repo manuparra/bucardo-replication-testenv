@@ -16,14 +16,14 @@ RUN apt-get install -y wget \
 RUN mkdir /data/
 WORKDIR /data
 
+RUN psql -U postgres -c "CREATE LANGUAGE plperlu;"
+
 RUN wget https://bucardo.org/downloads/Bucardo-5.6.0.tar.gz && \
                    tar xvfz Bucardo-5.6.0.tar.gz && \
                    cd Bucardo-5.6.0 && \
                    perl Makefile.PL && \
                    make && \
                    make install
-
-
 
 
 
